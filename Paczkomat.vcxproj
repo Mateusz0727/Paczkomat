@@ -127,14 +127,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AuthService.cpp" />
+    <ClCompile Include="Customer.cpp" />
     <ClCompile Include="Database.cpp" />
+    <ClCompile Include="Extensions.cpp" />
     <ClCompile Include="Paczkomat.cpp" />
     <ClCompile Include="Table.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Customer.h" />
     <ClInclude Include="Database.h" />
+    <ClInclude Include="Extensions.h" />
     <ClInclude Include="Handlers.h" />
+    <ClInclude Include="AuthService.h" />
     <ClInclude Include="Table.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

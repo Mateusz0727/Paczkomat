@@ -19,6 +19,9 @@
     <Filter Include="Pliki nagłówkowe\Database">
       <UniqueIdentifier>{e751666f-d5a5-44e0-96c5-c078bc556030}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pliki źródłowe\Models">
+      <UniqueIdentifier>{a974bdc3-acd2-4bf4-a91e-c47dc69d8558}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Paczkomat.cpp">
@@ -30,12 +33,18 @@
     <ClCompile Include="Table.cpp">
       <Filter>Pliki źródłowe\Database</Filter>
     </ClCompile>
+    <ClCompile Include="Customer.cpp">
+      <Filter>Pliki źródłowe\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="AuthService.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="Extensions.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Customer.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="Table.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="Database.h">
@@ -43,6 +52,15 @@
     </ClInclude>
     <ClInclude Include="Handlers.h">
       <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="AuthService.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Extensions.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Table.h">
+      <Filter>Pliki nagłówkowe\Database</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

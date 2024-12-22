@@ -7,6 +7,9 @@
 #include "Handlers.h"
 using namespace std;
 LogHandler logHandler;
+
+template class Table<Customer>;
+
 //Constructior: Create table file if doesn't exist
  template <typename T>
  Table<T>::Table() : _fileName(string(typeid(T).name()) + ".txt") { 
@@ -26,6 +29,7 @@ LogHandler logHandler;
      }
  }
 
+ //get all entities
 template <typename T>
 vector<T> Table<T>::getAll() {
     ifstream inFile(_fileName);
@@ -43,6 +47,75 @@ vector<T> Table<T>::getAll() {
     inFile.close();
     return entities;
 }
+//Get entity by Id
+template <typename T>
+ T Table<T>::getById(unsigned int id) {
+    auto records = getAll();
+    for (  auto& record : records) {         
+        if (record.id == id) {
+            return  record;
+        }
+    }
+    
+}
+
+ //Add entity to table
+ template <typename T>
+ void Table<T>::add(T entity) {
+     auto records = getAll();
+
+     unsigned int maxId = 0;
+     for (const auto& record : records) {
+         if (record.id > maxId) {
+             maxId = record.id;
+         }
+     }
+
+     entity.id = maxId + 1;
+
+     ofstream outFile(_fileName, ios::app); 
+     if (!outFile.is_open()) {
+         logHandler.log("Error: Unable to open file for writing: " + _fileName);
+         return;
+     }
+
+     outFile << entity << endl; 
+     outFile.close();
+
+     logHandler.log("Added entity with ID " + to_string(entity.id) + " to table: " + _fileName);
+ }
+ template <typename T>
+ void Table<T>::update( const T& updatedEntity) {
+     auto records = getAll();
+     bool found = false;
+     unsigned int id = updatedEntity.id;
+     for (auto& record : records) {
+         if (record.id == id) {
+             record = updatedEntity; 
+             found = true;
+             break;
+         }
+     }
+
+     if (!found) {
+         logHandler.log("Error: Record with ID " + to_string(id) + " not found.");
+         cerr << "Error: Record with ID " << id << " not found." << endl;
+         return;
+     }
+
+     ofstream outFile(_fileName, ios::trunc); 
+     if (!outFile.is_open()) {
+         logHandler.log("Error: Unable to open file for writing: " + _fileName);
+         cerr << "Error: Unable to open file for writing: " << _fileName << endl;
+         return;
+     }
+
+     for (const auto& record : records) {
+         outFile << record << endl; 
+     }
+
+     outFile.close();
+     logHandler.log("Updated record with ID " + to_string(id) + " in table: " + _fileName);
+ }
 
 
-template class Table<Customer>;

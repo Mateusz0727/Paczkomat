@@ -18,5 +18,8 @@ public:
 
 	T getById(unsigned int id);
 
+	void update( const T& updatedEntity);
+
 };
+
 #endif

@@ -53,7 +53,7 @@ int main() {
                 case 2:
                     if (user->isAdmin) {
                         cout << "All Users:\n";
-                        for (const auto& customer : db._customer.getAll()) {
+                        for (const auto& customer : db.getTable<Customer>().getAll()) {
                             cout << customer << endl;
                         }                       
                     }

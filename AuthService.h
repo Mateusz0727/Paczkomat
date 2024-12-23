@@ -11,7 +11,7 @@ private:
     const Customer* loggedInUser;   // Wskaünik do zalogowanego uøytkownika (tylko do odczytu)
 
 public:
-    explicit AuthService(Database& db) : customerTable(db._customer), loggedInUser(nullptr) {}
+    explicit AuthService(Database& db) : customerTable(db.getTable<Customer>()), loggedInUser(nullptr) {}
 
     bool login(const string& email, const string& password);
 

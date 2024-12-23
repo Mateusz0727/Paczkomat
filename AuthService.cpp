@@ -9,10 +9,10 @@ bool AuthService::login(const string& email, const string& password) {
 
     auto users = customerTable.getAll(); // Pobierz wszystkich u¿ytkowników
     for (auto& user : users) {
-        if (user.email == email && user.password == password) {
+        if (user.getEmail() == email && user.getPassword() == password) {
             loggedInUser = new Customer(user); // Kopia obiektu
             system("cls");
-            cout << "Login successful. Welcome, " << loggedInUser->firstname << "!" << endl;
+            cout << "Login successful. Welcome, " << loggedInUser->getFirstname() << "!" << endl;
             return true;
         }
     }
@@ -28,7 +28,7 @@ void AuthService::logout() {
         return;
     }
 
-    cout << "User " << loggedInUser->firstname << " has been logged out." << endl;
+    cout << "User " << loggedInUser->getFirstname() << " has been logged out." << endl;
     loggedInUser = nullptr;
 }
 

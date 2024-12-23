@@ -51,7 +51,7 @@ int main() {
                     break;
                 
                 case 2:
-                    if (user->isAdmin) {
+                    if (user->getIsAdmin()) {
                         cout << "All Users:\n";
                         for (const auto& customer : db.getTable<Customer>().getAll()) {
                             cout << customer << endl;

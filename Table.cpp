@@ -52,7 +52,7 @@ template <typename T>
  T Table<T>::getById(unsigned int id) {
     auto records = getAll();
     for (  auto& record : records) {         
-        if (record.id == id) {
+        if (record.getId() == id) {
             return  record;
         }
     }
@@ -66,12 +66,12 @@ template <typename T>
 
      unsigned int maxId = 0;
      for (const auto& record : records) {
-         if (record.id > maxId) {
-             maxId = record.id;
+         if (record.getId() > maxId) {
+             maxId = record.getId();
          }
      }
 
-     entity.id = maxId + 1;
+     entity.setId(  maxId + 1);
 
      ofstream outFile(_fileName, ios::app); 
      if (!outFile.is_open()) {
@@ -82,15 +82,15 @@ template <typename T>
      outFile << entity << endl; 
      outFile.close();
 
-     logHandler.log("Added entity with ID " + to_string(entity.id) + " to table: " + _fileName);
+     logHandler.log("Added entity with ID " + to_string(entity.getId()) + " to table: " + _fileName);
  }
  template <typename T>
  void Table<T>::update( const T& updatedEntity) {
      auto records = getAll();
      bool found = false;
-     unsigned int id = updatedEntity.id;
+     unsigned int id = updatedEntity.getId();
      for (auto& record : records) {
-         if (record.id == id) {
+         if (record.getId() == id) {
              record = updatedEntity; 
              found = true;
              break;

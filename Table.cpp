@@ -99,14 +99,14 @@ template <typename T>
 
      if (!found) {
          logHandler.log("Error: Record with ID " + to_string(id) + " not found.");
-         cerr << "Error: Record with ID " << id << " not found." << endl;
+         cout << "Error: Record with ID " << id << " not found." << endl;
          return;
      }
 
      ofstream outFile(_fileName, ios::trunc); 
      if (!outFile.is_open()) {
          logHandler.log("Error: Unable to open file for writing: " + _fileName);
-         cerr << "Error: Unable to open file for writing: " << _fileName << endl;
+         cout << "Error: Unable to open file for writing: " << _fileName << endl;
          return;
      }
 

@@ -29,7 +29,7 @@ int main() {
                     user->displayMenu(); 
                 }
                 else {
-                    cerr << "No user is logged in." << endl;
+                    cout << "No user is logged in." << endl;
                     break;
                 }
 

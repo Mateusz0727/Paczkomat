@@ -16,7 +16,7 @@ bool AuthService::login(const string& email, const string& password) {
             return true;
         }
     }
-    cerr << "Invalid email or password." << endl;
+    cout << "Invalid email or password." << endl;
     return false;
 }
 

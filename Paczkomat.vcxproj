@@ -131,7 +131,8 @@
     <ClCompile Include="Customer.cpp" />
     <ClCompile Include="Database.cpp" />
     <ClCompile Include="Extensions.cpp" />
-    <ClCompile Include="Paczkomat.cpp" />
+    <ClCompile Include="Handlers.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Table.cpp" />
   </ItemGroup>
   <ItemGroup>

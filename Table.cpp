@@ -4,11 +4,13 @@
 #include <string>
 #include <vector>
 #include "Customer.h"
+#include "Paczka.h"
 #include "Handlers.h"
 using namespace std;
 LogHandler logHandler;
 
 template class Table<Customer>;
+template class Table<Paczka>;
 
 //Constructior: Create table file if doesn't exist
  template <typename T>

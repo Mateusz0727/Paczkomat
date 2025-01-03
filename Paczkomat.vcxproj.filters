@@ -60,6 +60,9 @@
     <ClCompile Include="Handlers.cpp">
       <Filter>Pliki źródłowe\Helpers</Filter>
     </ClCompile>
+    <ClCompile Include="Paczka.cpp">
+      <Filter>Pliki źródłowe\Models</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database.h">
@@ -80,12 +83,18 @@
     <ClInclude Include="Handlers.h">
       <Filter>Pliki nagłówkowe\Helpers</Filter>
     </ClInclude>
+    <ClInclude Include="Paczka.h">
+      <Filter>Pliki nagłówkowe\Models</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="class Customer.txt">
       <Filter>Pliki zasobów</Filter>
     </Text>
     <Text Include="error_log.txt">
+      <Filter>Pliki zasobów</Filter>
+    </Text>
+    <Text Include="class Paczka.txt">
       <Filter>Pliki zasobów</Filter>
     </Text>
   </ItemGroup>

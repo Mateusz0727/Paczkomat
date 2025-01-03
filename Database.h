@@ -6,10 +6,12 @@
 #include <functional>
 #include "Table.h"
 #include "Customer.h"
+#include "Paczka.h"
 class Database {
 private:
     vector<string> tables;
     Table<Customer> _customer;
+    Table<Paczka> _paczka;
 public:
    
 

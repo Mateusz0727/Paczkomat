@@ -133,6 +133,7 @@
     <ClCompile Include="Extensions.cpp" />
     <ClCompile Include="Handlers.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Paczka.cpp" />
     <ClCompile Include="Table.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -141,10 +142,12 @@
     <ClInclude Include="Extensions.h" />
     <ClInclude Include="Handlers.h" />
     <ClInclude Include="AuthService.h" />
+    <ClInclude Include="Paczka.h" />
     <ClInclude Include="Table.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="class Customer.txt" />
+    <Text Include="class Paczka.txt" />
     <Text Include="error_log.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -5,7 +5,7 @@
 #include <string>
 #include <fstream>
 #include <ctime>
-
+using namespace std;
 class LogHandler {
 private:
     string logFileName;

@@ -6,6 +6,7 @@
 #include "Database.h"
 #include "AuthService.h"
 #include "Extensions.h"
+#include "Paczka.h"
 
 using namespace std;
 
@@ -13,7 +14,6 @@ Database db;
 AuthService _authService(db);
 
 int main() {
-    
     for (;;) {
         system("cls");
         string email, password;
@@ -26,7 +26,7 @@ int main() {
             do {
                 const Customer* user = _authService.getLoggedInUser();
                 if (user) {
-                    user->displayMenu(); 
+                    user->displayMenu();
                 }
                 else {
                     cout << "No user is logged in." << endl;
@@ -35,39 +35,39 @@ int main() {
 
                 if (!(cin >> choice)) {  // Sprawdzenie, czy użytkownik wpisał liczbę
                     choice = 9999;
-                    cin.clear(); 
+                    cin.clear();
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    continue;  
+                    continue;
                 }
 
                 switch (choice) {
                 case 1:
-                    //TODO:zamienić to na funkcje np. klasy menu aby kod był bardziej czytelny
                     cout << "Profile:\n";
                     cout << *user << endl;
                     cin.ignore();
                     cin.get();
                     system("cls");
                     break;
-                
+
                 case 2:
                     if (user->getIsAdmin()) {
                         cout << "All Users:\n";
                         for (const auto& customer : db.getTable<Customer>().getAll()) {
                             cout << customer << endl;
-                        }                       
+                        }
                     }
                     else {
                         cout << "Invalid option.\n";
-                        
                     }
                     cin.ignore();
                     cin.get();
                     system("cls");
                     break;
+
                 case 0:
                     _authService.logout();
                     break;
+
                 default:
                     cout << "Invalid choice. Please try again.\n";
                     cin.ignore();
@@ -83,5 +83,6 @@ int main() {
             system("cls");
         }
     }
+
     return 0;
 }

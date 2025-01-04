@@ -1,6 +1,6 @@
-#include <iostream>
-#include <string>
 #include "Customer.h"
+#include "Paczka.h"
+#include <iostream>
 using namespace std;
 
 istream& operator>>(istream& in, Customer& obj) {
@@ -10,12 +10,15 @@ istream& operator>>(istream& in, Customer& obj) {
 
 ostream& operator<<(ostream& os, const Customer& customer) {
     os << customer.id << " " << customer.firstname << " " << customer.surname << " "
-        << customer.email << " " << customer.password << " " << (customer.isAdmin?"Admin" : "User");
+        << customer.email << " " << customer.password << " " << (customer.isAdmin ? "Admin" : "User");
     return os;
 }
+
+// Wyœwietlanie menu dla u¿ytkownika
 void Customer::displayMenu() const {
     cout << "\n=== Main Menu ===\n";
     cout << "1. View Profile\n";
+
 
     if (isAdmin) {
         cout << "\n--- Admin Functions ---\n";
@@ -26,3 +29,4 @@ void Customer::displayMenu() const {
     cout << "========================\n";
     cout << "Choose an option: ";
 }
+

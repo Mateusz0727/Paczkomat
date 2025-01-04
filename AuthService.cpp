@@ -1,5 +1,6 @@
 #include "AuthService.h"
 #include <iostream>
+#include "Extensions.h"
 using namespace std;
 
 bool AuthService::login(const string& email, const string& password) {
@@ -40,9 +41,9 @@ bool AuthService::registration() {
     }
 
     cout << "Enter your password: ";
-    cin >> password;
+    hideText(password);
     cout << "Confirm your password: ";
-    cin >> confirmPassword;
+    hideText(confirmPassword);
 
     if (password != confirmPassword) {
         cout << "Error: Passwords do not match." << endl;

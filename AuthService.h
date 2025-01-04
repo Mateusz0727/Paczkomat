@@ -13,6 +13,7 @@ private:
 public:
     explicit AuthService(Database& db) : customerTable(db.getTable<Customer>()), loggedInUser(nullptr) {}
 
+    bool registration();
     bool login(const string& email, const string& password);
 
     void logout();

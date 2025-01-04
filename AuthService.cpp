@@ -1,6 +1,7 @@
 #include "AuthService.h"
 #include <iostream>
 using namespace std;
+
 bool AuthService::login(const string& email, const string& password) {
     if (loggedInUser != nullptr) {
         cout << "Error: A user is already logged in." << endl;
@@ -19,7 +20,47 @@ bool AuthService::login(const string& email, const string& password) {
     cout << "Invalid email or password." << endl;
     return false;
 }
+// Funkcja rejestracji u¿ytkownika
+bool AuthService::registration() {
+    string firstname, lastname, email, password, confirmPassword;
 
+    cout << "Enter your first name: ";
+    cin >> firstname;
+    cout << "Enter your last name: ";
+    cin >> lastname;
+    cout << "Enter your email: ";
+    cin >> email;
+
+    auto users = customerTable.getAll();
+    for (const auto& user : users) {
+        if (user.getEmail() == email) {
+            cout << "Error: An account with this email already exists." << endl;
+            return false;
+        }
+    }
+
+    cout << "Enter your password: ";
+    cin >> password;
+    cout << "Confirm your password: ";
+    cin >> confirmPassword;
+
+    if (password != confirmPassword) {
+        cout << "Error: Passwords do not match." << endl;
+        return false;
+    }
+
+
+    unsigned int newId = 1; 
+    if (!users.empty()) {
+        newId = users.back().getId() + 1; 
+    }
+
+    Customer newUser(newId, firstname, lastname, email, password);
+    customerTable.add(newUser); 
+
+    cout << "Registration successful. You can now log in." << endl;
+    return true;
+}
 
 // Funkcja wylogowania
 void AuthService::logout() {

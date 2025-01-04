@@ -26,8 +26,7 @@ ostream& operator<<(ostream& os, const Customer& customer) {
 // Wyœwietlanie menu dla u¿ytkownika
 void Customer::displayMenu() const {
     cout << "\n=== Main Menu ===\n";
-    cout << "1. View Profile\n";
-
+    cout << "1. View Profile\n"; // Po³¹czona opcja "View Profile" i "History"
 
     if (isAdmin) {
         cout << "\n--- Admin Functions ---\n";

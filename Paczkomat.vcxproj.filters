@@ -63,6 +63,9 @@
     <ClCompile Include="Paczka.cpp">
       <Filter>Pliki źródłowe\Models</Filter>
     </ClCompile>
+    <ClCompile Include="History.cpp">
+      <Filter>Pliki źródłowe\Services</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database.h">
@@ -85,6 +88,9 @@
     </ClInclude>
     <ClInclude Include="Paczka.h">
       <Filter>Pliki nagłówkowe\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="History.h">
+      <Filter>Pliki nagłówkowe\Services</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

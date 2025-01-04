@@ -7,6 +7,7 @@
 #include "AuthService.h"
 #include "Extensions.h"
 #include "Paczka.h"
+#include "History.h"
 
 using namespace std;
 
@@ -57,15 +58,37 @@ int main() {
                     }
 
                     switch (choice) {
-                    case 1:
-                        cout << "Profile:\n";
-                        cout << *user << endl;
-                        cin.ignore();
-                        cin.get();
-                        system("cls");
+                    case 1: // View Profile
+                        if (user) {
+                            // Wyświetlanie informacji o koncie
+                            cout << "\n=== Informacje o koncie ===\n";
+
+                            // Wyświetlanie szczegółów użytkownika
+                            cout << "User ID: " << user->getId() << endl;
+                            cout << "Name: " << user->getFirstname() << " " << user->getSurname() << endl;
+                            cout << "Email: " << user->getEmail() << endl;
+                            cout << "Typ uzytkownika: " << (user->getIsAdmin() ? "Admin" : "User") << endl;
+
+                            // Wyświetlanie historii paczek (jeśli istnieje)
+                            History history(to_string(user->getId())); // Historia na podstawie ID
+                            auto entries = history.getHistory();
+
+                            if (entries.size() > 3) {
+                                cout << "\n=== Historia paczek ===\n";
+                                for (size_t i = 3; i < entries.size(); ++i) { // Historia zaczyna się od czwartej linii
+                                    cout << entries[i] << endl;
+                                }
+                            }
+
+                            cout << "======================\n";
+
+                            cin.ignore();
+                            cin.get();
+                            system("cls");
+                        }
                         break;
 
-                    case 2:
+                    case 3:
                         if (user->getIsAdmin()) {
                             cout << "All Users:\n";
                             for (const auto& customer : db.getTable<Customer>().getAll()) {

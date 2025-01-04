@@ -1,6 +1,8 @@
 #include "AuthService.h"
 #include <iostream>
 #include "Extensions.h"
+#include "History.h"
+
 using namespace std;
 
 bool AuthService::login(const string& email, const string& password) {
@@ -50,18 +52,32 @@ bool AuthService::registration() {
         return false;
     }
 
-
-    unsigned int newId = 1; 
+    unsigned int newId = 1;
     if (!users.empty()) {
-        newId = users.back().getId() + 1; 
+        newId = users.back().getId() + 1;
     }
 
     Customer newUser(newId, firstname, lastname, email, password);
-    customerTable.add(newUser); 
+    customerTable.add(newUser); // Dodanie u¿ytkownika do tabeli
+
+    // Tworzenie pliku u¿ytkownika w folderze `users_info`
+    History userHistory(to_string(newId));
+    userHistory.addEntry("Account created for user with ID: " + to_string(newId));
+    userHistory.addEntry("Name: " + firstname + " " + lastname);
+    userHistory.addEntry("Email: " + email);
+
+    // Wyœwietlanie informacji o nowym u¿ytkowniku na ekranie
+    cout << "\n=== New Account Details ===\n";
+    cout << firstname << " " << lastname << endl;  // Imiê i nazwisko
+    cout << email << endl;                         // E-mail
+    cout << "ID: " << newId << endl;               // ID u¿ytkownika
+    cout << "Account info saved in: users_info/" << newId << "_info.txt\n";
+    cout << "================================\n";
 
     cout << "Registration successful. You can now log in." << endl;
     return true;
 }
+
 
 // Funkcja wylogowania
 void AuthService::logout() {

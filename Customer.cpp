@@ -9,8 +9,17 @@ istream& operator>>(istream& in, Customer& obj) {
 }
 
 ostream& operator<<(ostream& os, const Customer& customer) {
-    os << customer.id << " " << customer.firstname << " " << customer.surname << " "
-        << customer.email << " " << customer.password << " " << (customer.isAdmin ? "Admin" : "User");
+    if (dynamic_cast<ofstream*>(&os)) {
+        os << customer.id << " ";
+    }
+    os  << customer.firstname << " " << customer.surname << " "
+        << customer.email << " " << customer.password << " " ;
+    if (dynamic_cast<ofstream*>(&os)) {
+        os << (customer.isAdmin ? "1" : "0");
+    }
+    else { 
+        os << (customer.isAdmin ? "Admin" : "User");
+    }
     return os;
 }
 

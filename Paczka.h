@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-
+#include "EnumStatus.h"
 using namespace std;
 
 // Klasa abstrakcyjna Gabaryt
@@ -12,6 +12,7 @@ class Gabaryt {
 public:
     virtual void wyswietl() const = 0;  // Czysto wirtualna funkcja
     virtual ~Gabaryt() {}  // Wirtualny destruktor, zapewnia usuwanie obiektów pochodnych
+    virtual string getSize() const = 0;
 };
 
 // Klasy pochodne Gabaryt
@@ -20,6 +21,9 @@ public:
     void wyswietl() const override {
         cout << "Gabaryt: duzy" << endl;
     }
+    string getSize() const override {
+        return "L";
+    }
 };
 
 class GabarytB : public Gabaryt {
@@ -27,12 +31,18 @@ public:
     void wyswietl() const override {
         cout << "Gabaryt: sredni" << endl;
     }
+    string getSize() const override {
+        return "M";
+    }
 };
 
 class GabarytC : public Gabaryt {
 public:
     void wyswietl() const override {
         cout << "Gabaryt: maly" << endl;
+    }
+    string getSize() const override {
+        return "S";
     }
 };
 
@@ -45,6 +55,7 @@ private:
     string numerPaczkomatu;
     unsigned int u_id;
     Gabaryt* gabaryt;  // WskaŸnik do gabarytu
+    Status status;
 
 public:
     // Konstruktor

@@ -1,0 +1,3 @@
+Account created for user with ID: 3
+Name: xa@g ss
+Email: asd@g

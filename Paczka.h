@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include "EnumStatus.h"
+#include "Customer.h"
 using namespace std;
 
 // Klasa abstrakcyjna Gabaryt
@@ -49,6 +50,7 @@ public:
 // Klasa Paczka
 class Paczka {
 private:
+    
     unsigned int id;
     string telefon;
     string kodOdbioru;

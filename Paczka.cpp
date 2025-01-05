@@ -2,7 +2,7 @@
 
 // Konstruktor
 Paczka::Paczka() : id(0), telefon(""), kodOdbioru(""), u_id(0), gabaryt(nullptr) {}
-
+const Customer* loggedInUser;   // Wskaünik do zalogowanego uøytkownika (tylko do odczytu)
 // Settery
 void Paczka::setGabaryt(Gabaryt* g) {
     gabaryt = g;  // Ustawienie wskaünika na gabaryt
@@ -10,10 +10,7 @@ void Paczka::setGabaryt(Gabaryt* g) {
 
 // Wyúwietlanie informacji o paczce
 void Paczka::wyswietlInfo() const {
-    cout << "ID paczki: " << id << endl;
-    cout << "Telefon: " << telefon << endl;
-    cout << "Kod odbioru: " << kodOdbioru << endl;
-    cout << "User ID: " << u_id << endl;
+    cout << "ID paczki: " << id << "Telefon: " << telefon << "Kod odbioru: " << kodOdbioru << "User ID: " << loggedInUser->getId() << "first name: " << loggedInUser->getFirstname() << " surname: " << loggedInUser->getSurname();
     if (gabaryt) {
         gabaryt->wyswietl();  // Wyúwietlenie gabarytu
     }
@@ -23,6 +20,7 @@ void Paczka::wyswietlInfo() const {
 }
 
 void Paczka::nadaj() {
+    u_id = loggedInUser->getId();
     cout << "Enter recipient's phone number: ";
     cin >> telefon;
 
@@ -77,10 +75,10 @@ istream& operator>>(istream& in, Paczka& obj) {
 
 // Operator wyjúcia - zapis paczki do pliku
 ofstream& operator<<(ofstream& os, const Paczka& paczka) {
-    os << paczka.id << endl;
-    os << paczka.telefon << endl;
-    os << paczka.kodOdbioru << endl;
-    os << paczka.u_id << endl;
+    os << paczka.id;
+    os << paczka.telefon;
+    os << paczka.kodOdbioru;
+    os << paczka.u_id;
     return os;
 }
 

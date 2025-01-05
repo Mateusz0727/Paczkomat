@@ -131,10 +131,12 @@
     <ClCompile Include="AuthService.cpp" />
     <ClCompile Include="Customer.cpp" />
     <ClCompile Include="Database.cpp" />
+    <ClCompile Include="EnumStatus.h" />
     <ClCompile Include="Extensions.cpp" />
     <ClCompile Include="Handlers.cpp" />
     <ClCompile Include="History.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PackageLocker.cpp" />
     <ClCompile Include="Paczka.cpp" />
     <ClCompile Include="Table.cpp" />
   </ItemGroup>
@@ -145,6 +147,7 @@
     <ClInclude Include="Handlers.h" />
     <ClInclude Include="AuthService.h" />
     <ClInclude Include="History.h" />
+    <ClInclude Include="PackageLocker.h" />
     <ClInclude Include="Paczka.h" />
     <ClInclude Include="Table.h" />
   </ItemGroup>

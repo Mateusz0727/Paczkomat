@@ -66,6 +66,12 @@
     <ClCompile Include="History.cpp">
       <Filter>Pliki źródłowe\Services</Filter>
     </ClCompile>
+    <ClCompile Include="EnumStatus.h">
+      <Filter>Pliki nagłówkowe\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="PackageLocker.cpp">
+      <Filter>Pliki źródłowe\Models</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database.h">
@@ -91,6 +97,9 @@
     </ClInclude>
     <ClInclude Include="History.h">
       <Filter>Pliki nagłówkowe\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="PackageLocker.h">
+      <Filter>Pliki nagłówkowe\Models</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

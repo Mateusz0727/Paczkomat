@@ -19,70 +19,27 @@ void Paczka::wyswietlInfo() const {
     }
 }
 
-void Paczka::nadaj() {
-    u_id = loggedInUser->getId();
-    cout << "Enter recipient's phone number: ";
-    cin >> telefon;
 
-    cout << "Enter parcel locker number: ";
-    cin >> numerPaczkomatu;
-
-    cout << "Choose parcel size (A - Small, B - Medium, C - Large): ";
-    char x;
-    cin >> x;
-    x = tolower(x);  // Zmiana na ma³e litery
-
-    // Tworzenie obiektu Gabaryt na podstawie wyboru u¿ytkownika
-    if (x == 'a') {
-        gabaryt = new GabarytA();
-    }
-    else if (x == 'b') {
-        gabaryt = new GabarytB();
-    }
-    else if (x == 'c') {
-        gabaryt = new GabarytC();
-    }
-    else {
-        cout << "Invalid size choice! Defaulting to large size." << endl;
-        gabaryt = new GabarytC();  // Domyœlny wybór gabarytu du¿ego
-    }
-
-    // Zapis do pliku
-    ofstream file("paczka.txt", ios::app);  // Otwieramy plik w trybie dopisywania
-    if (file.is_open()) {
-        file << *this;  // Zapisujemy paczkê do pliku
-        cout << "Paczka zosta³a nadana i zapisana w pliku." << endl;
-        file.close();
-    }
-    else {
-        cout << "Nie uda³o siê otworzyæ pliku do zapisu." << endl;
-    }
-}
 
 // Operator wejœcia - wczytywanie danych paczki
 istream& operator>>(istream& in, Paczka& obj) {
-    cout << "Podaj ID paczki: ";
-    in >> obj.id;
-    in.ignore();  // Ignorowanie nowej linii po wczytaniu ID
-    cout << "Podaj telefon: ";
-    getline(in, obj.telefon);
-    cout << "Podaj kod odbioru: ";
-    getline(in, obj.kodOdbioru);
-    cout << "Podaj User ID: ";
-    in >> obj.u_id;
+    
+    in >> obj.id     >> obj.telefon     >> obj.status  >> obj.kodOdbioru>>obj.numerPaczkomatu    >> obj.u_id;
     return in;
 }
 
 // Operator wyjœcia - zapis paczki do pliku
 ofstream& operator<<(ofstream& os, const Paczka& paczka) {
-    os << paczka.id;
-    os << paczka.telefon;
-    os << paczka.kodOdbioru;
-    os << paczka.u_id;
+    os << paczka.id<<" ";
+    os << paczka.telefon << " ";
+    os << paczka.status << " ";
+    os << paczka.kodOdbioru << " ";
+    os << paczka.numerPaczkomatu << " ";
+    os << paczka.u_id<<endl;
     return os;
 }
 
 // Destruktor
 Paczka::~Paczka() {
-    delete gabaryt;  // Zwalniamy pamiêæ, któr¹ dynamicznie przypisaliœmy do gabarytu
+   /* delete gabaryt;*/  // Zwalniamy pamiêæ, któr¹ dynamicznie przypisaliœmy do gabarytu
 }

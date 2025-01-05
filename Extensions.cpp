@@ -1,6 +1,8 @@
 #include "extensions.h"
 #include <iostream>
 #include <conio.h>  
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 void hideText(string& text) {
     char ch;
@@ -18,4 +20,12 @@ void hideText(string& text) {
         }
     }
     cout << endl;
+}
+string generateRandomDigits() {
+    string digits;
+    srand(static_cast<unsigned int>(time(nullptr))); 
+    for (int i = 0; i < 6; ++i) {
+        digits += to_string(rand() % 10); 
+    }
+    return digits;
 }

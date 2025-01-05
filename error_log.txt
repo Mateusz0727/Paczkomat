@@ -49,3 +49,8 @@
 2025-01-04 21:14:03: Added entity with ID 7 to table: class Customer.txt
 2025-01-04 21:23:23: Added entity with ID 2 to table: class Customer.txt
 2025-01-05 13:33:32: Added entity with ID 3 to table: class Customer.txt
+2025-01-05 19:09:12: Added entity with ID 1 to table: class Paczka.txt
+2025-01-05 19:10:04: Added entity with ID 1 to table: class Paczka.txt
+2025-01-05 19:18:13: Added entity with ID 2 to table: class Paczka.txt
+2025-01-05 19:18:52: Added entity with ID 1 to table: class Paczka.txt
+2025-01-05 19:23:25: Added entity with ID 1 to table: class Paczka.txt

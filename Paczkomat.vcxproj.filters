@@ -72,6 +72,12 @@
     <ClCompile Include="PackageLocker.cpp">
       <Filter>Pliki źródłowe\Models</Filter>
     </ClCompile>
+    <ClCompile Include="PackageService.h">
+      <Filter>Pliki nagłówkowe\Services</Filter>
+    </ClCompile>
+    <ClCompile Include="PackageService.cpp">
+      <Filter>Pliki źródłowe\Services</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database.h">

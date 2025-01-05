@@ -1,10 +1,30 @@
 #ifndef ENUMSTATUS_H
 #define ENUMSTATUS_H
-enum Status
-{
-    nadana = 0, 
+
+#include <iostream>
+using namespace std;
+
+enum Status {
+    nadana = 0,
     doOdebrania = 1,
     odebrana = 2,
-  
 };
-#endif ENUMSTATUS_H
+
+inline istream& operator>>(istream& in, Status& status) {
+    int value;
+    if (in >> value && value >= 0 && value <= 2) { 
+        status = static_cast<Status>(value);
+    }
+    else {
+        in.setstate(ios::failbit);
+    }
+    return in;
+}
+
+// Przeci¹¿enie operatora << dla zapisywania Status
+inline ostream& operator<<(ostream& os, const Status& status) {
+    os << static_cast<int>(status);
+    return os;
+}
+
+#endif // ENUMSTATUS_H

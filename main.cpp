@@ -8,12 +8,14 @@
 #include "Extensions.h"
 #include "Paczka.h"
 #include "History.h"
+#include "PackageService.h"
 
 using namespace std;
 
 Database db;
 AuthService _authService(db);
-
+PackageService _packageService(db);
+const Customer* user;
 int main() {
     for (;;) {
         system("cls");
@@ -43,6 +45,7 @@ int main() {
                 do {
                     const Customer* user = _authService.getLoggedInUser();
                     if (user) {
+                        ::user = user;
                         user->displayMenu();
                     }
                     else {
@@ -87,7 +90,8 @@ int main() {
                             system("cls");
                         }
                         break;
-
+                    case 2:
+                        _packageService.nadaj(*::user);
                     case 3:
                         if (user->getIsAdmin()) {
                             cout << "All Users:\n";

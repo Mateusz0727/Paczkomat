@@ -4,5 +4,5 @@
 #include <string>
 using namespace std;
 void hideText(string& text);
-
+string generateRandomDigits();
 #endif // EXTENSIONS_H

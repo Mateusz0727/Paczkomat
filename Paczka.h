@@ -85,7 +85,7 @@ public:
     // Wyœwietlenie informacji o paczce
     void wyswietlInfo() const;
     //nadawanie
-    void nadaj();
+
 
     // Przeci¹¿enie operatorów
     friend istream& operator>>(istream& in, Paczka& obj);

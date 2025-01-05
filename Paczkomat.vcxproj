@@ -137,6 +137,8 @@
     <ClCompile Include="History.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PackageLocker.cpp" />
+    <ClCompile Include="PackageService.cpp" />
+    <ClCompile Include="PackageService.h" />
     <ClCompile Include="Paczka.cpp" />
     <ClCompile Include="Table.cpp" />
   </ItemGroup>

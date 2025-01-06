@@ -68,7 +68,7 @@ void PackageService::nadaj(Customer user) {
     cout << "Kod odbioru tej paczki to " + package.getKodOdbioru() << endl;
 
 
-
+    cout << package.getLastModified()<<endl;
     // Pobranie bie¿¹cej daty i godziny
     time_t now = time(0);
     tm ltm;
@@ -94,7 +94,7 @@ void PackageService::nadaj(Customer user) {
         cout << "Error: Could not open file for writing: " << fileName << endl;
     }
 
-    cout << "Parcel successfully added!\n";
+    cout << "Package successfully added!\n";
 }
 
 void PackageService::pickUp( )

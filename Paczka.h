@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <ctime> 
 #include "EnumStatus.h"
 #include "Customer.h"
 using namespace std;
@@ -58,31 +59,38 @@ private:
     unsigned int u_id;
     Gabaryt* gabaryt;  // WskaŸnik do gabarytu
     Status status;
+    time_t lastModified;
+    void updateModificationTime();
 
 public:
     // Konstruktor
     Paczka();
 
     // Gettery i settery
+      // Gettery i settery
     unsigned int getId() const { return id; }
-    void setId(unsigned int id) { this->id = id; }
+    void setId(unsigned int id) { this->id = id; updateModificationTime(); }
 
     string getTelefon() const { return telefon; }
-    void setTelefon(const string& telefon) { this->telefon = telefon; }
+    void setTelefon(const string& telefon) { this->telefon = telefon; updateModificationTime(); }
 
     string getKodOdbioru() const { return kodOdbioru; }
-    void setKodOdbioru(const string& kodOdbioru) { this->kodOdbioru = kodOdbioru; }
+    void setKodOdbioru(const string& kodOdbioru) { this->kodOdbioru = kodOdbioru; updateModificationTime(); }
 
     string getNumerPaczkomatu() const { return numerPaczkomatu; }
-    void setNumerPaczkomatu(const string& numerPaczkomatu) { this->numerPaczkomatu = numerPaczkomatu; }
+    void setNumerPaczkomatu(const string& numerPaczkomatu) { this->numerPaczkomatu = numerPaczkomatu; updateModificationTime(); }
 
     unsigned int getUId() const { return u_id; }
-    void setUId(unsigned int u_id) { this->u_id = u_id; }
+    void setUId(unsigned int u_id) { this->u_id = u_id; updateModificationTime(); }
 
     // Ustawienie gabarytu
-    void setGabaryt(Gabaryt* g);
+    void setGabaryt(Gabaryt* g) { gabaryt = g; updateModificationTime(); }
+
     Status getStatus() const { return status; }
-    void setStatus(Status status) { this->status = status; }
+    void setStatus(Status status) { this->status = status; updateModificationTime(); }
+
+    // Nowa metoda, która zwraca czas ostatniej modyfikacji
+    string getLastModified() const;
     // Wyœwietlenie informacji o paczce
     void wyswietlInfo() const;
     //nadawanie

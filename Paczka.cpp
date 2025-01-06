@@ -3,10 +3,7 @@
 // Konstruktor
 Paczka::Paczka() : id(0), telefon(""), kodOdbioru(""), u_id(0), gabaryt(nullptr) {}
 const Customer* loggedInUser;   // WskaŸnik do zalogowanego u¿ytkownika (tylko do odczytu)
-// Settery
-void Paczka::setGabaryt(Gabaryt* g) {
-    gabaryt = g;  // Ustawienie wskaŸnika na gabaryt
-}
+
 
 // Wyœwietlanie informacji o paczce
 void Paczka::wyswietlInfo() const {
@@ -19,12 +16,24 @@ void Paczka::wyswietlInfo() const {
     }
 }
 
+void Paczka::updateModificationTime() {
+    lastModified = std::time(nullptr);  // Ustawienie bie¿¹cego czasu
+}
+string Paczka::getLastModified() const {
+    char buffer[80];
+    struct tm timeinfo; 
 
+    localtime_s(&timeinfo, &lastModified);
+
+    std::strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", &timeinfo);
+
+    return std::string(buffer);
+}
 
 // Operator wejœcia - wczytywanie danych paczki
 istream& operator>>(istream& in, Paczka& obj) {
     
-    in >> obj.id     >> obj.telefon     >> obj.status  >> obj.kodOdbioru   >> obj.u_id;
+    in >> obj.id     >> obj.telefon     >> obj.status  >> obj.kodOdbioru   >> obj.u_id >> obj.lastModified;
     return in;
 }
 
@@ -35,11 +44,12 @@ ofstream& operator<<(ofstream& os, const Paczka& paczka) {
     os << paczka.status << " ";
     os << paczka.kodOdbioru << " ";
     /*os << paczka.numerPaczkomatu << " ";*/
-    os << paczka.u_id;
+    os << paczka.u_id << " ";
+    os << paczka.lastModified ;
     return os;
 }
 
 // Destruktor
 Paczka::~Paczka() {
-   /* delete gabaryt;*/  // Zwalniamy pamiêæ, któr¹ dynamicznie przypisaliœmy do gabarytu
+    delete gabaryt;  // Zwalniamy pamiêæ, któr¹ dynamicznie przypisaliœmy do gabarytu
 }

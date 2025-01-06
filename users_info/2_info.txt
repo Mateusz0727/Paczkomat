@@ -1,8 +1,6 @@
 Account created for user with ID: 2
 Name: kuba panki
 Email: kuba@panki.pl
-ID Paczki: 101, Status: Wysłana, Data: 2025-01-01
-ID Paczki: 102, Status: Dostarczona, Data: 2025-01-02
-ID Paczki: 103, Status: Wysłana, Data: 2025-01-03
-ID Paczki: 104, Status: Oczekuje na odbiór, Data: 2025-01-04
-ID Paczki: 105, Status: Zwrot do nadawcy, Data: 2025-01-05
+0, nadana, 2025-1-5, 20:55:11
+0, nadana, 2025-1-5, 20:57:32
+0, nadana, 2025-1-6, 12:56:52

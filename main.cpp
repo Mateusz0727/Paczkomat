@@ -92,6 +92,7 @@ int main() {
                         break;
                     case 2:
                         _packageService.nadaj(*::user);
+                        break;
                     case 3:
                         if (user->getIsAdmin()) {
                             cout << "All Users:\n";

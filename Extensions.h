@@ -5,4 +5,5 @@
 using namespace std;
 void hideText(string& text);
 string generateRandomDigits();
+bool isModifiedMoreThanFiveMinutesAgo(const time_t& lastModified);
 #endif // EXTENSIONS_H

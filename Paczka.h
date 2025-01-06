@@ -91,6 +91,7 @@ public:
 
     // Nowa metoda, która zwraca czas ostatniej modyfikacji
     string getLastModified() const;
+    time_t getLastModifiedTime() const { return lastModified; }
     // Wyœwietlenie informacji o paczce
     void wyswietlInfo() const;
     //nadawanie

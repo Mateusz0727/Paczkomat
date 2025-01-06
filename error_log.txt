@@ -98,3 +98,10 @@
 2025-01-06 15:52:43: Added entity with ID 2 to table: class Paczka.txt
 2025-01-06 15:54:25: Added entity with ID 3 to table: class Paczka.txt
 2025-01-06 15:54:54: Updated record with ID 3 in table: class Paczka.txt
+2025-01-06 16:07:45: Updated record with ID 1 in table: class Paczka.txt
+2025-01-06 16:07:52: Added entity with ID 4 to table: class Paczka.txt
+2025-01-06 16:10:56: Updated record with ID 2 in table: class Paczka.txt
+2025-01-06 16:10:56: Updated record with ID 3 in table: class Paczka.txt
+2025-01-06 16:13:15: Updated record with ID 1 in table: class Paczka.txt
+2025-01-06 16:13:30: Updated record with ID 4 in table: class Paczka.txt
+2025-01-06 16:13:52: Updated record with ID 1 in table: class Paczka.txt

@@ -99,26 +99,31 @@ void PackageService::nadaj(Customer user) {
 
 void PackageService::pickUp( )
 {
-    string numerOdbioru;
+    string pickUpCode;
     cout << "Enter your pickup code: ";
-    cin >> numerOdbioru;
+    cin >> pickUpCode;
     vector<Paczka> packages = paczkaTable.getAll();
-    Paczka paczkaodebrana;
+    Paczka packageCollected;
     bool found = false;
     for (Paczka package : packages)
     {
-        if (package.getKodOdbioru() == numerOdbioru&&package.getStatus()==Status::doOdebrania)
+        if (isModifiedMoreThanFiveMinutesAgo(package.getLastModifiedTime()))
         {
-            paczkaodebrana = package;
+            package.setStatus(Status::doOdebrania);
+            paczkaTable.update(package);
+        }
+        if ( package.getKodOdbioru() == pickUpCode &&package.getStatus()==Status::doOdebrania)
+        {
+            packageCollected = package;
             found = true;
             break;
         }
     }
     if (found) {
-        paczkaodebrana.setStatus(Status::odebrana);
+        packageCollected.setStatus(Status::odebrana);
         cout << "Paczka odebrana pomyœlnie!" << endl;
 
-        paczkaTable.update(paczkaodebrana);
+        paczkaTable.update(packageCollected);
     }
     else {
         cout << "Nie znaleziono paczki do odbioru lub paczka ma nieodpowiedni status." << endl;

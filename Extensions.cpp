@@ -29,3 +29,11 @@ string generateRandomDigits() {
     }
     return digits;
 }
+bool isModifiedMoreThanFiveMinutesAgo(const time_t& lastModified) {
+
+    time_t currentTime = std::time(nullptr);
+
+    double secondsDifference = difftime(currentTime, lastModified);
+
+    return secondsDifference > 300;
+}

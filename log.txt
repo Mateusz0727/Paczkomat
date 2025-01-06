@@ -105,3 +105,17 @@
 2025-01-06 16:13:15: Updated record with ID 1 in table: class Paczka.txt
 2025-01-06 16:13:30: Updated record with ID 4 in table: class Paczka.txt
 2025-01-06 16:13:52: Updated record with ID 1 in table: class Paczka.txt
+2025-01-06 17:48:50: Login successful. Email: a@s, User: John
+2025-01-06 17:49:41: Login successful. Email: a@s, User: John
+2025-01-06 18:26:01: Login successful. Email: a@s, User: John
+2025-01-06 18:27:42: Login successful. Email: a@s, User: John
+2025-01-06 18:28:19: Login successful. Email: a@s, User: John
+2025-01-06 18:32:54: Login successful. Email: a@s, User: John
+2025-01-06 18:33:53: Login successful. Email: a@s, User: John
+2025-01-06 18:38:46: Login successful. Email: a@s, User: John
+2025-01-06 18:39:48: Login successful. Email: a@s, User: John
+2025-01-06 18:41:22: Login successful. Email: a@s, User: John
+2025-01-06 18:51:00: Login successful. Email: a@s, User: John
+2025-01-06 18:53:31: Login successful. Email: a@s, User: John
+2025-01-06 18:56:52: Login successful. Email: a@g, User: John
+2025-01-06 18:56:59: Added entity with ID 5 to table: class Paczka.txt

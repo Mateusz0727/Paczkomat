@@ -78,6 +78,9 @@
     <ClCompile Include="PackageService.cpp">
       <Filter>Pliki źródłowe\Services</Filter>
     </ClCompile>
+    <ClCompile Include="AdminService.cpp">
+      <Filter>Pliki źródłowe\Services</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database.h">
@@ -106,6 +109,9 @@
     </ClInclude>
     <ClInclude Include="PackageLocker.h">
       <Filter>Pliki nagłówkowe\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="AdminService.h">
+      <Filter>Pliki nagłówkowe\Services</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

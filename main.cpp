@@ -9,12 +9,13 @@
 #include "Paczka.h"
 #include "History.h"
 #include "PackageService.h"
-
+#include "AdminService.h"
 using namespace std;
 
 Database db;
 AuthService _authService(db);
 PackageService _packageService(db);
+AdminService _adminService(db);
 const Customer* user;
 int main() {
     for (;;) {
@@ -104,6 +105,17 @@ int main() {
                             for (const auto& customer : db.getTable<Customer>().getAll()) {
                                 cout << customer << endl;
                             }
+                        }
+                        else {
+                            cout << "Invalid option.\n";
+                        }
+                        cin.ignore();
+                        cin.get();
+                        system("cls");
+                        break;
+                    case 5:
+                        if (user->getIsAdmin()) {
+                            _adminService.generateRaport();
                         }
                         else {
                             cout << "Invalid option.\n";

@@ -99,7 +99,7 @@ public:
 
     // Przeci¹¿enie operatorów
     friend istream& operator>>(istream& in, Paczka& obj);
-    friend ofstream& operator<<(ofstream& os, const Paczka& paczka);
+    friend ostream& operator<<(ostream& os, const Paczka& paczka);
 
     // Destruktor
     ~Paczka();

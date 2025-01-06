@@ -2,16 +2,17 @@
 #define AUTH_SERVICE_H
 
 #include <string>
+
 #include "Customer.h"
 #include "Database.h"
 #include "Handlers.h"
 
 class AuthService {
 private:
-    LogHandler logHandler;
+ 
     Table<Customer>& customerTable; // Referencja do tabeli u¿ytkowników
     const Customer* loggedInUser;   // WskaŸnik do zalogowanego u¿ytkownika (tylko do odczytu)
-
+    const LogHandler logHandler;
 public:
     explicit AuthService(Database& db) : customerTable(db.getTable<Customer>()), loggedInUser(nullptr) {}
 

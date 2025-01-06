@@ -21,7 +21,6 @@ inline istream& operator>>(istream& in, Status& status) {
     return in;
 }
 
-// Przeci¹¿enie operatora << dla zapisywania Status
 inline ostream& operator<<(ostream& os, const Status& status) {
     os << static_cast<int>(status);
     return os;

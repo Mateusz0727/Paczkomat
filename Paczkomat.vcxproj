@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AdminService.cpp" />
     <ClCompile Include="AuthService.cpp" />
     <ClCompile Include="Customer.cpp" />
     <ClCompile Include="Database.cpp" />
@@ -143,6 +144,7 @@
     <ClCompile Include="Table.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AdminService.h" />
     <ClInclude Include="Customer.h" />
     <ClInclude Include="Database.h" />
     <ClInclude Include="Extensions.h" />

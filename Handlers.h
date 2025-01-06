@@ -17,4 +17,4 @@ public:
     void log(const string& message) const;
 };
 
-#endif // ERROR_HANDLER_H
+#endif // LOG_HANDLER_H

@@ -33,6 +33,7 @@ void Customer::displayMenu() const {
     if (isAdmin) {
         cout << "\n--- Admin Functions ---\n";
         cout << "4. View All Users\n";
+        cout << "5. Generete raport\n";
     }
 
     cout << "\n0. Logout\n";

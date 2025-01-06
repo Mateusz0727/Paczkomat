@@ -1,8 +1,7 @@
 #include "extensions.h"
-#include <iostream>
-#include <conio.h>  
-#include <cstdlib>
 #include <ctime>
+#include <cstdio>
+#include "EnumStatus.h"
 using namespace std;
 void hideText(string& text) {
     char ch;
@@ -31,9 +30,22 @@ string generateRandomDigits() {
 }
 bool isModifiedMoreThanFiveMinutesAgo(const time_t& lastModified) {
 
-    time_t currentTime = std::time(nullptr);
+    time_t currentTime = time(nullptr);
 
     double secondsDifference = difftime(currentTime, lastModified);
 
     return secondsDifference > 300;
+}
+
+string statusToString(const Status& status) {
+    switch (status) {
+    case nadana:
+        return "nadana";
+    case doOdebrania:
+        return "do odebrania";
+    case odebrana:
+        return "odebrana";
+    default:
+        return "nieznany status";
+    }
 }

@@ -2,7 +2,7 @@
 
 // Konstruktor
 Paczka::Paczka() : id(0), telefon(""), kodOdbioru(""), u_id(0), gabaryt(nullptr) {}
-const Customer* loggedInUser;   // WskaŸnik do zalogowanego u¿ytkownika (tylko do odczytu)
+const Customer* loggedInUser;  
 
 
 // Wyœwietlanie informacji o paczce
@@ -17,7 +17,7 @@ void Paczka::wyswietlInfo() const {
 }
 
 void Paczka::updateModificationTime() {
-    lastModified = std::time(nullptr);  // Ustawienie bie¿¹cego czasu
+    lastModified = time(nullptr);  // Ustawienie bie¿¹cego czasu
 }
 string Paczka::getLastModified() const {
     char buffer[80];
@@ -25,9 +25,9 @@ string Paczka::getLastModified() const {
 
     localtime_s(&timeinfo, &lastModified);
 
-    std::strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", &timeinfo);
+    strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", &timeinfo);
 
-    return std::string(buffer);
+    return string(buffer);
 }
 
 // Operator wejœcia - wczytywanie danych paczki
@@ -38,7 +38,7 @@ istream& operator>>(istream& in, Paczka& obj) {
 }
 
 // Operator wyjœcia - zapis paczki do pliku
-ofstream& operator<<(ofstream& os, const Paczka& paczka) {
+ostream& operator<<(ostream& os, const Paczka& paczka) {
     os << paczka.id<<" ";
     os << paczka.telefon << " ";
     os << paczka.status << " ";

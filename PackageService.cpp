@@ -21,29 +21,53 @@ void PackageService::nadaj(Customer user) {
         return;
     }
     package.setTelefon(telefon);
+    cout << "Available parcel sizes:\n";
+    bool hasOptions = false;
+    if (locker->canFitPackage(GabarytA())) {
+        cout << "A - Large\n";
+        hasOptions = true;
+    }
+    if (locker->canFitPackage(GabarytB())) {
+        cout << "B - Medium\n";
+        hasOptions = true;
+    }
+    if (locker->canFitPackage(GabarytC())) {
+        cout << "C - Small\n";
+        hasOptions = true;
+    }
 
-    cout << "Choose parcel size (A - Small, B - Medium, C - Large): ";
+    if (!hasOptions) {
+        cout << "No available slots in the locker. Please try again later.\n";
+        return;
+    }
+    cout << "Choose parcel size (A - Large, B - Medium, C - Small): ";
     char x;
     cin >> x;
     x = tolower(x);
 
     // Ustawienie rozmiaru paczki
-    if (x == 'a') {
-        package.setGabaryt(new GabarytA());
+    Gabaryt* selectedGabaryt = nullptr;
+
+    if (x == 'a' && locker->canFitPackage(GabarytA())) {
+        selectedGabaryt = new GabarytA();
     }
-    else if (x == 'b') {
-        package.setGabaryt(new GabarytB());
+    else if (x == 'b' && locker->canFitPackage(GabarytB())) {
+        selectedGabaryt = new GabarytB();
     }
-    else if (x == 'c') {
-        package.setGabaryt(new GabarytC());
+    else if (x == 'c' && locker->canFitPackage(GabarytC())) {
+        selectedGabaryt = new GabarytC();
     }
     else {
         cout << "Invalid size choice! Defaulting to large size.\n";
         package.setGabaryt(new GabarytC());
     }
-
+    package.setKodOdbioru(generateRandomDigits());
     // Dodanie paczki do tabeli
     paczkaTable.add(package);
+    locker->reserveSlot(*selectedGabaryt);
+    cout << "Kod odbioru tej paczki to " + package.getKodOdbioru() << endl;
+
+
 
     // Pobranie bie¿¹cej daty i godziny
     time_t now = time(0);
@@ -71,4 +95,32 @@ void PackageService::nadaj(Customer user) {
     }
 
     cout << "Parcel successfully added!\n";
+}
+
+void PackageService::pickUp( )
+{
+    string numerOdbioru;
+    cout << "Enter your pickup code: ";
+    cin >> numerOdbioru;
+    vector<Paczka> packages = paczkaTable.getAll();
+    Paczka paczkaodebrana;
+    bool found = false;
+    for (Paczka package : packages)
+    {
+        if (package.getKodOdbioru() == numerOdbioru&&package.getStatus()==Status::doOdebrania)
+        {
+            paczkaodebrana = package;
+            found = true;
+            break;
+        }
+    }
+    if (found) {
+        paczkaodebrana.setStatus(Status::odebrana);
+        cout << "Paczka odebrana pomyœlnie!" << endl;
+
+        paczkaTable.update(paczkaodebrana);
+    }
+    else {
+        cout << "Nie znaleziono paczki do odbioru lub paczka ma nieodpowiedni status." << endl;
+    }
 }

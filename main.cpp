@@ -94,6 +94,11 @@ int main() {
                         _packageService.nadaj(*::user);
                         break;
                     case 3:
+
+                        
+                        _packageService.pickUp();
+                        break;
+                    case 4:
                         if (user->getIsAdmin()) {
                             cout << "All Users:\n";
                             for (const auto& customer : db.getTable<Customer>().getAll()) {

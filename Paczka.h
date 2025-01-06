@@ -81,7 +81,8 @@ public:
 
     // Ustawienie gabarytu
     void setGabaryt(Gabaryt* g);
-
+    Status getStatus() const { return status; }
+    void setStatus(Status status) { this->status = status; }
     // Wyœwietlenie informacji o paczce
     void wyswietlInfo() const;
     //nadawanie

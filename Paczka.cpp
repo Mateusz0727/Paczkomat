@@ -24,7 +24,7 @@ void Paczka::wyswietlInfo() const {
 // Operator wejœcia - wczytywanie danych paczki
 istream& operator>>(istream& in, Paczka& obj) {
     
-    in >> obj.id     >> obj.telefon     >> obj.status  >> obj.kodOdbioru>>obj.numerPaczkomatu    >> obj.u_id;
+    in >> obj.id     >> obj.telefon     >> obj.status  >> obj.kodOdbioru   >> obj.u_id;
     return in;
 }
 
@@ -34,8 +34,8 @@ ofstream& operator<<(ofstream& os, const Paczka& paczka) {
     os << paczka.telefon << " ";
     os << paczka.status << " ";
     os << paczka.kodOdbioru << " ";
-    os << paczka.numerPaczkomatu << " ";
-    os << paczka.u_id<<endl;
+    /*os << paczka.numerPaczkomatu << " ";*/
+    os << paczka.u_id;
     return os;
 }
 

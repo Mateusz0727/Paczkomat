@@ -11,7 +11,7 @@ private:
     string logFileName;
 
 public:
-    LogHandler(const string& logFile = "error_log.txt")
+    LogHandler(const string& logFile = "log.txt")
         : logFileName(logFile) {}
 
     void log(const string& message) const;

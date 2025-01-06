@@ -112,7 +112,7 @@
     <Text Include="class Customer.txt">
       <Filter>Pliki zasobów</Filter>
     </Text>
-    <Text Include="error_log.txt">
+    <Text Include="log.txt">
       <Filter>Pliki zasobów</Filter>
     </Text>
     <Text Include="class Paczka.txt">

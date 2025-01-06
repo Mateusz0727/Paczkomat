@@ -8,6 +8,7 @@ using namespace std;
 bool AuthService::login(const string& email, const string& password) {
     if (loggedInUser != nullptr) {
         cout << "Error: A user is already logged in." << endl;
+        logHandler.log("Login attempt failed: A user is already logged in.");
         return false;
     }
 
@@ -17,10 +18,13 @@ bool AuthService::login(const string& email, const string& password) {
             loggedInUser = new Customer(user); // Kopia obiektu
             system("cls");
             cout << "Login successful. Welcome, " << loggedInUser->getFirstname() << "!" << endl;
+            logHandler.log("Login successful. Email: " + email + ", User: " + loggedInUser->getFirstname());
             return true;
         }
     }
     cout << "Invalid email or password." << endl;
+    logHandler.log("Login attempt failed: Invalid email or password. Email: " + email);
+
     return false;
 }
 // Funkcja rejestracji u¿ytkownika
@@ -38,6 +42,7 @@ bool AuthService::registration() {
     for (const auto& user : users) {
         if (user.getEmail() == email) {
             cout << "Error: An account with this email already exists." << endl;
+            logHandler.log("Registration failed: An account with this email already exists. Email: " + email);
             return false;
         }
     }
@@ -49,6 +54,7 @@ bool AuthService::registration() {
 
     if (password != confirmPassword) {
         cout << "Error: Passwords do not match." << endl;
+        logHandler.log("Registration failed: Passwords do not match. Email: " + email); 
         return false;
     }
 
@@ -75,6 +81,8 @@ bool AuthService::registration() {
     cout << "================================\n";
 
     cout << "Registration successful. You can now log in." << endl;
+    logHandler.log("Registration successful. New account created. Email: " + email);
+
     return true;
 }
 

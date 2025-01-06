@@ -156,7 +156,7 @@
   <ItemGroup>
     <Text Include="class Customer.txt" />
     <Text Include="class Paczka.txt" />
-    <Text Include="error_log.txt" />
+    <Text Include="log.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -36,7 +36,7 @@ template <typename T>
 vector<T> Table<T>::getAll() {
     ifstream inFile(_fileName);
     if (!inFile.is_open()) {
-        // Obs³uga b³êdu
+        logHandler.log("Error: Unable to open file for writing: " + _fileName);
     }
 
     vector<T> entities;

@@ -81,6 +81,12 @@
     <ClCompile Include="AdminService.cpp">
       <Filter>Pliki źródłowe\Services</Filter>
     </ClCompile>
+    <ClCompile Include="PackageLockerService.h">
+      <Filter>Pliki nagłówkowe\Services</Filter>
+    </ClCompile>
+    <ClCompile Include="PackageLockerService.cpp">
+      <Filter>Pliki źródłowe\Services</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database.h">
@@ -122,6 +128,9 @@
       <Filter>Pliki zasobów</Filter>
     </Text>
     <Text Include="class Paczka.txt">
+      <Filter>Pliki zasobów</Filter>
+    </Text>
+    <Text Include="class PackageLocker.txt">
       <Filter>Pliki zasobów</Filter>
     </Text>
   </ItemGroup>

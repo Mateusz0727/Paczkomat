@@ -138,6 +138,8 @@
     <ClCompile Include="History.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PackageLocker.cpp" />
+    <ClCompile Include="PackageLockerService.cpp" />
+    <ClCompile Include="PackageLockerService.h" />
     <ClCompile Include="PackageService.cpp" />
     <ClCompile Include="PackageService.h" />
     <ClCompile Include="Paczka.cpp" />
@@ -157,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="class Customer.txt" />
+    <Text Include="class PackageLocker.txt" />
     <Text Include="class Paczka.txt" />
     <Text Include="log.txt" />
   </ItemGroup>

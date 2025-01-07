@@ -1,35 +1,18 @@
 #include <string>
 #include "PackageLocker.h"
 using namespace std;
-bool PackageLocker::canFitPackage(const Gabaryt& gabaryt) const
-{
-    string size = gabaryt.getSize();
-    if (size == "S")
-    {
-        return smallSlots > 0;
-       
-    }
-    else if (size == "M")
-    {
-        return mediumSlots > 0;
-    }
-    else if (size == "L")
-    {
-        return largeSlots > 0;
-    }
-    return false;
 
+
+
+
+istream& operator>>(istream& in, PackageLocker& obj)
+{
+
+    return in>>obj.id>>obj.MAXsmallSlots>>obj.MAXmediumSlots>>obj.MAXlargeSlots>>obj.smallSlots>>obj.mediumSlots>>obj.largeSlots;
 }
 
-void PackageLocker::reserveSlot(const Gabaryt& gabaryt) {
-    string size = gabaryt.getSize();
-    if (size == "S") {
-        --smallSlots;
-    }
-    else if (size == "M") {
-        --mediumSlots;
-    }
-    else if (size == "L") {
-        --largeSlots;
-    }
+ostream& operator<<(ostream& os, const PackageLocker& locker)
+{
+    return os << locker.id<<" " << locker.MAXsmallSlots << " " << locker.MAXmediumSlots << " " << locker.MAXlargeSlots << " " << locker.smallSlots << " " << locker.mediumSlots << " " << locker.largeSlots;
+
 }

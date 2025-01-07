@@ -4,6 +4,7 @@
 #include "Handlers.h"
 #include "Customer.h"
 #include "Paczka.h"
+#include "PackageLocker.h"
 
 static LogHandler logHandler;
 // Lub, jeœli wolisz, mo¿esz u¿yæ swojego globalnego/pojedynczego loggera.
@@ -128,3 +129,4 @@ void Table<T>::update(const T& updatedEntity)
 // Dziêki temu linker wygeneruje kod dla nastêpuj¹cych typów:
 template class Table<Customer>;
 template class Table<Paczka>;
+template class Table<PackageLocker>;

@@ -7,11 +7,13 @@
 #include "Table.h"
 #include "Customer.h"
 #include "Paczka.h"
+#include "PackageLocker.h"
 class Database {
 private:
     vector<string> tables;
     Table<Customer> _customer;
     Table<Paczka> _paczka;
+    Table<PackageLocker> _packageLocker;
 public:
    
 

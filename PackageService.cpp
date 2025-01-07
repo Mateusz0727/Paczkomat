@@ -7,6 +7,7 @@
 using namespace std;
 
 void PackageService::nadaj(Customer user) {
+   
     Paczka package;
     package.setUId(user.getId());
 
@@ -24,15 +25,15 @@ void PackageService::nadaj(Customer user) {
 
     cout << "Available parcel sizes:\n";
     bool hasOptions = false;
-    if (locker->canFitPackage(GabarytA())) {
+    if (lockerService.canFitPackage(GabarytA())) {
         cout << "A - Large\n";
         hasOptions = true;
     }
-    if (locker->canFitPackage(GabarytB())) {
+    if (lockerService.canFitPackage(GabarytB())) {
         cout << "B - Medium\n";
         hasOptions = true;
     }
-    if (locker->canFitPackage(GabarytC())) {
+    if (lockerService.canFitPackage(GabarytC())) {
         cout << "C - Small\n";
         hasOptions = true;
     }
@@ -49,13 +50,13 @@ void PackageService::nadaj(Customer user) {
 
     Gabaryt* selectedGabaryt = nullptr;
 
-    if (x == 'a' && locker->canFitPackage(GabarytA())) {
+    if (x == 'a' && lockerService.canFitPackage(GabarytA())) {
         selectedGabaryt = new GabarytA();
     }
-    else if (x == 'b' && locker->canFitPackage(GabarytB())) {
+    else if (x == 'b' && lockerService.canFitPackage(GabarytB())) {
         selectedGabaryt = new GabarytB();
     }
-    else if (x == 'c' && locker->canFitPackage(GabarytC())) {
+    else if (x == 'c' && lockerService.canFitPackage(GabarytC())) {
         selectedGabaryt = new GabarytC();
     }
     else {
@@ -71,7 +72,7 @@ void PackageService::nadaj(Customer user) {
     paczkaTable.add(package);
 
     // Zarezerwuj slot w paczkomacie
-    locker->reserveSlot(*selectedGabaryt);
+    lockerService.reserveSlot(*selectedGabaryt);
 
     // Teraz 'package.getId()' jest ju¿ aktualnym ID z bazy!
     cout << "Kod odbioru tej paczki to " << package.getKodOdbioru() << endl;

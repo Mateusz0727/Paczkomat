@@ -1,5 +1,5 @@
 #include "Paczka.h"
-
+#include <sstream>
 // Konstruktor
 Paczka::Paczka() : id(0), telefon(""), kodOdbioru(""), u_id(0), gabaryt(nullptr) {}
 const Customer* loggedInUser;  
@@ -29,23 +29,37 @@ string Paczka::getLastModified() const {
 
     return string(buffer);
 }
-
-// Operator wejœcia - wczytywanie danych paczki
 istream& operator>>(istream& in, Paczka& obj) {
-    
-    in >> obj.id     >> obj.telefon     >> obj.status  >> obj.kodOdbioru   >> obj.u_id >> obj.lastModified;
+    string line;
+    if (getline(in, line)) {
+        stringstream ss(line);
+        string token;
+
+        if (getline(ss, token, ',')) obj.id = stoi(token);
+        if (getline(ss, token, ',')) obj.telefon = token;
+        if (getline(ss, token, ',')) {
+            stringstream statusStream(token);
+            statusStream >> obj.status; 
+            if (statusStream.fail()) {
+                throw runtime_error("Niepoprawny status w danych wejœciowych.");
+            }
+        }
+        if (getline(ss, token, ',')) obj.kodOdbioru = token;
+       
+        if (getline(ss, token, ',')) obj.u_id = stoi(token);
+        if (getline(ss, token, ',')) obj.lastModified = stoll(token);
+    }
     return in;
 }
 
 // Operator wyjœcia - zapis paczki do pliku
 ostream& operator<<(ostream& os, const Paczka& paczka) {
-    os << paczka.id<<" ";
-    os << paczka.telefon << " ";
-    os << paczka.status << " ";
-    os << paczka.kodOdbioru << " ";
-    /*os << paczka.numerPaczkomatu << " ";*/
-    os << paczka.u_id << " ";
-    os << paczka.lastModified ;
+    os << paczka.id << ",";
+    os << paczka.telefon << ",";
+    os << paczka.status << ",";
+    os << paczka.kodOdbioru << ",";
+    os << paczka.u_id << ",";
+    os << paczka.lastModified;
     return os;
 }
 

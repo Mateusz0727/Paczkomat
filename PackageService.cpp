@@ -21,6 +21,7 @@ void PackageService::nadaj(Customer user) {
         return;
     }
     package.setTelefon(telefon);
+
     cout << "Available parcel sizes:\n";
     bool hasOptions = false;
     if (locker->canFitPackage(GabarytA())) {
@@ -40,12 +41,12 @@ void PackageService::nadaj(Customer user) {
         cout << "No available slots in the locker. Please try again later.\n";
         return;
     }
+
     cout << "Choose parcel size (A - Large, B - Medium, C - Small): ";
     char x;
     cin >> x;
     x = tolower(x);
 
-    // Ustawienie rozmiaru paczki
     Gabaryt* selectedGabaryt = nullptr;
 
     if (x == 'a' && locker->canFitPackage(GabarytA())) {
@@ -59,16 +60,24 @@ void PackageService::nadaj(Customer user) {
     }
     else {
         cout << "Invalid size choice! Defaulting to large size.\n";
-        package.setGabaryt(new GabarytC());
+        selectedGabaryt = new GabarytA();
     }
+
+    package.setGabaryt(selectedGabaryt);
     package.setKodOdbioru(generateRandomDigits());
-    // Dodanie paczki do tabeli
+
+    // Dodanie paczki do tabeli:
+    // teraz add(T& entity) ustawi ID w oryginalnym obiekcie 'package'
     paczkaTable.add(package);
+
+    // Zarezerwuj slot w paczkomacie
     locker->reserveSlot(*selectedGabaryt);
-    cout << "Kod odbioru tej paczki to " + package.getKodOdbioru() << endl;
 
+    // Teraz 'package.getId()' jest ju¿ aktualnym ID z bazy!
+    cout << "Kod odbioru tej paczki to " << package.getKodOdbioru() << endl;
+    cout << "Nadano paczke o ID = " << package.getId() << endl;
+    cout << "Ostatnia modyfikacja: " << package.getLastModified() << endl;
 
-    cout << package.getLastModified()<<endl;
     // Pobranie bie¿¹cej daty i godziny
     time_t now = time(0);
     tm ltm;
@@ -84,10 +93,12 @@ void PackageService::nadaj(Customer user) {
 
     // Dodanie informacji o paczce do pliku u¿ytkownika
     string fileName = "users_info/" + to_string(user.getId()) + "_info.txt";
-    ofstream outFile(fileName, ios::app); // Otwórz plik w trybie dopisywania
-
+    ofstream outFile(fileName, ios::app);
     if (outFile.is_open()) {
-        outFile << package.getId() << ", nadana, " << currentDate << ", " << currentTime << endl;
+        // Teraz paczka ma poprawne ID
+        outFile << package.getId() << ", nadana, "
+            << currentDate << ", "
+            << currentTime << endl;
         outFile.close();
     }
     else {
@@ -97,31 +108,35 @@ void PackageService::nadaj(Customer user) {
     cout << "Package successfully added!\n";
 }
 
-void PackageService::pickUp( )
-{
+void PackageService::pickUp() {
     string pickUpCode;
     cout << "Enter your pickup code: ";
     cin >> pickUpCode;
+
     vector<Paczka> packages = paczkaTable.getAll();
     Paczka packageCollected;
     bool found = false;
-    for (Paczka package : packages)
-    {
-        if (isModifiedMoreThanFiveMinutesAgo(package.getLastModifiedTime()))
-        {
+
+    for (Paczka package : packages) {
+        // Automatyczna zmiana statusu po 5 minutach
+        if (isModifiedMoreThanFiveMinutesAgo(package.getLastModifiedTime())) {
             package.setStatus(Status::doOdebrania);
             paczkaTable.update(package);
         }
-        if ( package.getKodOdbioru() == pickUpCode &&package.getStatus()==Status::doOdebrania)
+
+        if (package.getKodOdbioru() == pickUpCode &&
+            package.getStatus() == Status::doOdebrania)
         {
             packageCollected = package;
             found = true;
             break;
         }
     }
+
     if (found) {
         packageCollected.setStatus(Status::odebrana);
-        cout << "Paczka odebrana pomyœlnie!" << endl;
+        cout << "Paczka odebrana pomyœlnie! ID = "
+            << packageCollected.getId() << endl;
 
         paczkaTable.update(packageCollected);
     }

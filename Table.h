@@ -4,22 +4,27 @@
 #include <string>
 #include <vector>
 #include <iostream>
-using namespace std;
+
 template <typename T>
 class Table {
 private:
-	string _fileName;
+    std::string _fileName;
+
 public:
-	explicit Table();
-	
-	void add(T entity);
+    // Konstruktor
+    explicit Table();
 
-	vector<T> getAll();
+    // Dodawanie obiektu (przekazujemy przez referencjê!)
+    void add(T& entity);
 
-	T getById(unsigned int id);
+    // Pobiera wszystkie obiekty z "bazy" (z pliku)
+    std::vector<T> getAll();
 
-	void update( const T& updatedEntity);
+    // Pobiera obiekt po ID
+    T getById(unsigned int id);
 
+    // Aktualizuje obiekt w "bazie"
+    void update(const T& updatedEntity);
 };
 
-#endif
+#endif // TABLE_H

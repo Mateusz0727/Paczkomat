@@ -12,6 +12,8 @@ public:
 
 	bool canFitPackage(const Gabaryt& gabaryt) const;
 
+	void releaseSlot(const Gabaryt& gabaryt);
+
 
 };
 

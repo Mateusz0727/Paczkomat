@@ -129,6 +129,7 @@ void PackageService::pickUp() {
             package.getStatus() == Status::doOdebrania)
         {
             packageCollected = package;
+            
             found = true;
             break;
         }
@@ -136,12 +137,16 @@ void PackageService::pickUp() {
 
     if (found) {
         packageCollected.setStatus(Status::odebrana);
-        cout << "Paczka odebrana pomyœlnie! ID = "
+        cout << "Package successfully picked up! ID = "
             << packageCollected.getId() << endl;
 
         paczkaTable.update(packageCollected);
+
+        Gabaryt* gabaryt = packageCollected.getGabaryt();
+        lockerService.releaseSlot(*gabaryt);  
+        cout << "Slot for the package has been released.\n";
     }
     else {
-        cout << "Nie znaleziono paczki do odbioru lub paczka ma nieodpowiedni status." << endl;
+        cout << "Package not found or incorrect status.\n";
     }
 }

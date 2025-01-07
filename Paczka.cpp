@@ -39,31 +39,63 @@ istream& operator>>(istream& in, Paczka& obj) {
         if (getline(ss, token, ',')) obj.telefon = token;
         if (getline(ss, token, ',')) {
             stringstream statusStream(token);
-            statusStream >> obj.status; 
+            statusStream >> obj.status;
             if (statusStream.fail()) {
                 throw runtime_error("Niepoprawny status w danych wejœciowych.");
             }
         }
         if (getline(ss, token, ',')) obj.kodOdbioru = token;
-       
         if (getline(ss, token, ',')) obj.u_id = stoi(token);
         if (getline(ss, token, ',')) obj.lastModified = stoll(token);
+
+        if (getline(ss, token, ',')) {
+            if (token == "A") {
+                obj.gabaryt = new GabarytA();
+            }
+            else if (token == "B") {
+                obj.gabaryt = new GabarytB();
+            }
+            else if (token == "C") {
+                obj.gabaryt = new GabarytC();
+            }
+            else {
+                throw runtime_error("Niepoprawny gabaryt w danych wejœciowych.");
+            }
+        }
     }
     return in;
 }
 
-// Operator wyjœcia - zapis paczki do pliku
 ostream& operator<<(ostream& os, const Paczka& paczka) {
     os << paczka.id << ",";
     os << paczka.telefon << ",";
     os << paczka.status << ",";
     os << paczka.kodOdbioru << ",";
     os << paczka.u_id << ",";
-    os << paczka.lastModified;
+    os << paczka.lastModified << ",";
+
+    if (paczka.gabaryt) {
+        if (dynamic_cast<GabarytA*>(paczka.gabaryt)) {
+            os << "A";
+        }
+        else if (dynamic_cast<GabarytB*>(paczka.gabaryt)) {
+            os << "B";
+        }
+        else if (dynamic_cast<GabarytC*>(paczka.gabaryt)) {
+            os << "C";
+        }
+        else {
+            os << "Nieznany";
+        }
+    }
+    else {
+        os << "Brak gabarytu";  
+    }
+
     return os;
 }
 
 // Destruktor
 Paczka::~Paczka() {
-    delete gabaryt;  // Zwalniamy pamiêæ, któr¹ dynamicznie przypisaliœmy do gabarytu
+    /*delete gabaryt;*/  // Zwalniamy pamiêæ, któr¹ dynamicznie przypisaliœmy do gabarytu
 }

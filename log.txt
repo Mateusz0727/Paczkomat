@@ -236,3 +236,59 @@
 2025-01-07 22:18:00: Updated record with ID 9 in table: class Paczka.txt
 2025-01-07 22:18:00: Updated record with ID 10 in table: class Paczka.txt
 2025-01-07 22:18:00: Updated record with ID 10 in table: class Paczka.txt
+2025-01-07 23:12:17: Login successful. Email: a@g, User: John
+2025-01-07 23:12:20: Updated record with ID 1 in table: class Paczka.txt
+2025-01-07 23:12:20: Updated record with ID 2 in table: class Paczka.txt
+2025-01-07 23:12:20: Updated record with ID 3 in table: class Paczka.txt
+2025-01-07 23:12:20: Updated record with ID 4 in table: class Paczka.txt
+2025-01-07 23:12:20: Updated record with ID 5 in table: class Paczka.txt
+2025-01-07 23:12:21: Updated record with ID 6 in table: class Paczka.txt
+2025-01-07 23:12:21: Updated record with ID 7 in table: class Paczka.txt
+2025-01-07 23:12:21: Updated record with ID 8 in table: class Paczka.txt
+2025-01-07 23:12:21: Updated record with ID 9 in table: class Paczka.txt
+2025-01-07 23:12:21: Updated record with ID 10 in table: class Paczka.txt
+2025-01-07 23:12:21: Updated record with ID 11 in table: class Paczka.txt
+2025-01-07 23:12:21: Updated record with ID 12 in table: class Paczka.txt
+2025-01-07 23:12:21: Updated record with ID 13 in table: class Paczka.txt
+2025-01-07 23:12:21: Updated record with ID 14 in table: class Paczka.txt
+2025-01-07 23:12:21: Updated record with ID 15 in table: class Paczka.txt
+2025-01-07 23:12:21: Updated record with ID 16 in table: class Paczka.txt
+2025-01-07 23:12:21: Updated record with ID 17 in table: class Paczka.txt
+2025-01-07 23:12:21: Updated record with ID 18 in table: class Paczka.txt
+2025-01-07 23:12:21: Updated record with ID 19 in table: class Paczka.txt
+2025-01-07 23:12:21: Updated record with ID 20 in table: class Paczka.txt
+2025-01-07 23:12:21: Updated record with ID 21 in table: class Paczka.txt
+2025-01-07 23:12:21: Updated record with ID 22 in table: class Paczka.txt
+2025-01-07 23:12:21: Updated record with ID 23 in table: class Paczka.txt
+2025-01-07 23:12:21: Updated record with ID 24 in table: class Paczka.txt
+2025-01-07 23:12:21: Updated record with ID 25 in table: class Paczka.txt
+2025-01-07 23:12:21: Updated record with ID 26 in table: class Paczka.txt
+2025-01-07 23:12:21: Updated record with ID 26 in table: class Paczka.txt
+2025-01-07 23:13:18: Login successful. Email: a@g, User: John
+2025-01-07 23:15:48: Login successful. Email: a@g, User: John
+2025-01-07 23:15:54: Added entity with ID 1 to table: class Paczka.txt
+2025-01-07 23:15:54: Updated record with ID 1 in table: class PackageLocker.txt
+2025-01-07 23:16:22: Login successful. Email: a@s, User: John
+2025-01-07 23:17:10: Login successful. Email: a@s, User: John
+2025-01-07 23:18:35: Login successful. Email: a@g, User: John
+2025-01-07 23:18:49: Updated record with ID 1 in table: class Paczka.txt
+2025-01-07 23:19:06: Login successful. Email: a@g, User: John
+2025-01-07 23:20:23: Login successful. Email: a@g, User: John
+2025-01-07 23:21:41: Login successful. Email: a@g, User: John
+2025-01-07 23:22:14: Login successful. Email: a@g, User: John
+2025-01-07 23:23:36: Login successful. Email: a@g, User: John
+2025-01-07 23:25:56: Login successful. Email: a@g, User: John
+2025-01-07 23:26:54: Added entity with ID 1 to table: class Paczka.txt
+2025-01-07 23:26:56: Updated record with ID 1 in table: class PackageLocker.txt
+2025-01-07 23:28:50: Updated record with ID 1 in table: class Paczka.txt
+2025-01-07 23:29:33: Login successful. Email: a@g, User: John
+2025-01-07 23:33:48: Login successful. Email: a@g, User: John
+2025-01-07 23:34:34: Added entity with ID 1 to table: class Paczka.txt
+2025-01-07 23:34:34: Updated record with ID 1 in table: class PackageLocker.txt
+2025-01-07 23:34:53: Updated record with ID 1 in table: class Paczka.txt
+2025-01-07 23:34:53: Updated record with ID 1 in table: class Paczka.txt
+2025-01-07 23:34:53: Updated record with ID 1 in table: class PackageLocker.txt
+2025-01-07 23:35:27: Login successful. Email: a@g, User: John
+2025-01-07 23:35:31: Updated record with ID 1 in table: class Paczka.txt
+2025-01-07 23:35:31: Updated record with ID 1 in table: class Paczka.txt
+2025-01-07 23:35:31: Updated record with ID 1 in table: class PackageLocker.txt

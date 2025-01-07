@@ -47,3 +47,23 @@ bool PackageLockerService::canFitPackage(const Gabaryt& gabaryt) const
     return false;
 
 }
+void PackageLockerService::releaseSlot(const Gabaryt& gabaryt) {
+    string size = gabaryt.getSize();
+    PackageLocker locker = lockerTable.getById(1);
+
+    if (size == "S") {
+        int s = locker.getSmallSlots();
+        locker.setSmallSlots(s + 1); 
+        lockerTable.update(locker);
+    }
+    else if (size == "M") {
+        int m = locker.getMediumSlots();
+        locker.setMediumSlots(m + 1); 
+        lockerTable.update(locker);
+    }
+    else if (size == "L") {
+        int l = locker.getLargeSlots();
+        locker.setLargeSlots(l + 1); 
+        lockerTable.update(locker);
+    }
+}

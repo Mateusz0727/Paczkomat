@@ -84,7 +84,9 @@ public:
     void setUId(unsigned int u_id) { this->u_id = u_id; updateModificationTime(); }
 
     // Ustawienie gabarytu
+    Gabaryt* getGabaryt() const { return gabaryt; }
     void setGabaryt(Gabaryt* g) { gabaryt = g; updateModificationTime(); }
+    
 
     Status getStatus() const { return status; }
     void setStatus(Status status) { this->status = status; updateModificationTime(); }

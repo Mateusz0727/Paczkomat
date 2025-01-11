@@ -19,7 +19,7 @@ public:
 
     void nadaj(Customer user); // Deklaracja funkcji nadaj
 
-    void pickUp();
+    void pickUp(Customer user);
 };
 
 #endif // PACKAGE_SERVICE_H

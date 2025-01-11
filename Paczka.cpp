@@ -7,12 +7,12 @@ const Customer* loggedInUser;
 
 // Wyœwietlanie informacji o paczce
 void Paczka::wyswietlInfo() const {
-    cout << "ID paczki: " << id << "Telefon: " << telefon << "Kod odbioru: " << kodOdbioru << "User ID: " << loggedInUser->getId() << "first name: " << loggedInUser->getFirstname() << " surname: " << loggedInUser->getSurname();
+    cout << "package ID: " << id << "phone number: " << telefon << "Code: " << kodOdbioru << "User ID: " << loggedInUser->getId() << "first name: " << loggedInUser->getFirstname() << " surname: " << loggedInUser->getSurname();
     if (gabaryt) {
         gabaryt->wyswietl();  // Wyœwietlenie gabarytu
     }
     else {
-        cout << "Brak gabarytu." << endl;
+        cout << "No size found" << endl;
     }
 }
 
@@ -41,7 +41,7 @@ istream& operator>>(istream& in, Paczka& obj) {
             stringstream statusStream(token);
             statusStream >> obj.status;
             if (statusStream.fail()) {
-                throw runtime_error("Niepoprawny status w danych wejœciowych.");
+                throw runtime_error("Incorrect status in an input data.");
             }
         }
         if (getline(ss, token, ',')) obj.kodOdbioru = token;
@@ -59,7 +59,7 @@ istream& operator>>(istream& in, Paczka& obj) {
                 obj.gabaryt = new GabarytC();
             }
             else {
-                throw runtime_error("Niepoprawny gabaryt w danych wejœciowych.");
+                throw runtime_error("Incorrect size in an input data.");
             }
         }
     }

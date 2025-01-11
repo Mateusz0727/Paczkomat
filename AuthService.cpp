@@ -91,7 +91,6 @@ bool AuthService::registration() {
     cout << "Account info saved in: users_info/" << newId << "_info.txt\n";
     cout << "================================\n";
 
-    cout << "Registration successful. You can now log in." << endl;
     logHandler.log("Registration successful. New account created. Email: " + email);
 
     return true;

@@ -27,8 +27,8 @@ ostream& operator<<(ostream& os, const Customer& customer) {
 void Customer::displayMenu() const {
     cout << "\n=== Main Menu ===\n";
     cout << "1. View Profile\n"; // Po³¹czona opcja "View Profile" i "History"
-    cout << "2. Nadaj paczke\n"; // Dodanie opcji "Nadaj paczkê"
-    cout << "3. Odbierz paczke\n";
+    cout << "2. Send Package\n"; // Dodanie opcji "Nadaj paczkê"
+    cout << "3. Pick Up Package\n";
 
     if (isAdmin) {
         cout << "\n--- Admin Functions ---\n";

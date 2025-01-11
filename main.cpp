@@ -65,20 +65,20 @@ int main() {
                     case 1: // View Profile
                         if (user) {
                             // Wyświetlanie informacji o koncie
-                            cout << "\n=== Informacje o koncie ===\n";
+                            cout << "\n=== Account Information ===\n";
 
                             // Wyświetlanie szczegółów użytkownika
                             cout << "User ID: " << user->getId() << endl;
                             cout << "Name: " << user->getFirstname() << " " << user->getSurname() << endl;
                             cout << "Email: " << user->getEmail() << endl;
-                            cout << "Typ uzytkownika: " << (user->getIsAdmin() ? "Admin" : "User") << endl;
+                            cout << "User/Admin: " << (user->getIsAdmin() ? "Admin" : "User") << endl;
 
                             // Wyświetlanie historii paczek (jeśli istnieje)
                             History history(to_string(user->getId())); // Historia na podstawie ID
                             auto entries = history.getHistory();
 
                             if (entries.size() > 3) {
-                                cout << "\n=== Historia paczek ===\n";
+                                cout << "\n=== Package History ===\n";
                                 for (size_t i = 3; i < entries.size(); ++i) { // Historia zaczyna się od czwartej linii
                                     cout << entries[i] << endl;
                                 }
@@ -97,7 +97,7 @@ int main() {
                     case 3:
 
                         
-                        _packageService.pickUp();
+                        _packageService.pickUp(*::user);
                         break;
                     case 4:
                         if (user->getIsAdmin()) {

@@ -38,11 +38,11 @@ void AdminService::generateRaport() {
     reportFile << "|                             RAPORT PACZEK                         |" << endl;
     reportFile << "======================================================================" << endl;
     reportFile << left << setw(10) << "ID"
-        << setw(15) << "Telefon"
-        << setw(15) << "Kod Odbioru"
+        << setw(15) << "Phone number"
+        << setw(15) << "Code"
         << setw(20) << "User Email"
         << setw(15) << "Status"
-        << "Ostatnia Modyfikacja" << endl;
+        << "Last Modified" << endl;
     reportFile << "----------------------------------------------------------------------" << endl;
 
     for (const Paczka& package : packages) {

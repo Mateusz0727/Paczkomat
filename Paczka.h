@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <ctime> 
+#include <vector>
 #include "EnumStatus.h"
 #include "Customer.h"
 using namespace std;
@@ -51,7 +52,6 @@ public:
 // Klasa Paczka
 class Paczka {
 private:
-    
     unsigned int id;
     string telefon;
     string kodOdbioru;
@@ -60,14 +60,32 @@ private:
     Gabaryt* gabaryt;  // WskaŸnik do gabarytu
     Status status;
     time_t lastModified;
+
     void updateModificationTime();
+
+    // Klasa wewnêtrzna Historia
+    class Historia {
+    public:
+        time_t timestamp;
+        Status status;
+
+        Historia(time_t ts, Status st) : timestamp(ts), status(st) {}
+
+        void wyswietl() const {
+            char buffer[26];  // Bufor na sformatowany czas
+            ctime_s(buffer, sizeof(buffer), &timestamp);
+            cout << "Czas: " << buffer << endl;
+
+        }
+    };
+
+    vector<Historia> historiaStatusow;  // Lista historii zmian statusu
 
 public:
     // Konstruktor
     Paczka();
 
     // Gettery i settery
-      // Gettery i settery
     unsigned int getId() const { return id; }
     void setId(unsigned int id) { this->id = id; updateModificationTime(); }
 
@@ -83,21 +101,27 @@ public:
     unsigned int getUId() const { return u_id; }
     void setUId(unsigned int u_id) { this->u_id = u_id; updateModificationTime(); }
 
-    // Ustawienie gabarytu
     Gabaryt* getGabaryt() const { return gabaryt; }
     void setGabaryt(Gabaryt* g) { gabaryt = g; updateModificationTime(); }
-    
 
     Status getStatus() const { return status; }
-    void setStatus(Status status) { this->status = status; updateModificationTime(); }
+    void setStatus(Status status) {
+        this->status = status;
+        updateModificationTime();
+        historiaStatusow.emplace_back(time(nullptr), status);
+    }
 
-    // Nowa metoda, która zwraca czas ostatniej modyfikacji
     string getLastModified() const;
     time_t getLastModifiedTime() const { return lastModified; }
-    // Wyœwietlenie informacji o paczce
-    void wyswietlInfo() const;
-    //nadawanie
 
+    void wyswietlInfo() const;
+
+    // Wyœwietlenie historii zmian statusu
+    void wyswietlHistorie() const {
+        for (const auto& h : historiaStatusow) {
+            h.wyswietl();
+        }
+    }
 
     // Przeci¹¿enie operatorów
     friend istream& operator>>(istream& in, Paczka& obj);

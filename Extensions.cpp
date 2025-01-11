@@ -40,12 +40,12 @@ bool isModifiedMoreThanFiveMinutesAgo(const time_t& lastModified) {
 string statusToString(const Status& status) {
     switch (status) {
     case nadana:
-        return "nadana";
+        return "sent";
     case doOdebrania:
-        return "do odebrania";
+        return "waiting";
     case odebrana:
-        return "odebrana";
+        return "taken";
     default:
-        return "nieznany status";
+        return "unknown status";
     }
 }

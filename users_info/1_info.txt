@@ -1,12 +1,6 @@
 Account created for user with ID: 1
 Name: John Doe
 Email: a@g
-5, nadana, 2025-1-7, 16:24:4
-6, nadana, 2025-1-7, 16:25:15
-23, nadana, 2025-1-7, 19:57:3
-24, nadana, 2025-1-7, 21:13:32
-25, nadana, 2025-1-7, 22:14:8
-26, nadana, 2025-1-7, 22:15:57
-1, nadana, 2025-1-7, 23:15:54
-1, nadana, 2025-1-7, 23:26:56
-1, nadana, 2025-1-7, 23:34:34
+Account created for user with ID: 1
+Name: k k
+Email: k

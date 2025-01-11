@@ -43,7 +43,7 @@ void PackageService::nadaj(Customer user) {
         return;
     }
 
-    cout << "Choose parcel size (A - Large, B - Medium, C - Small): ";
+    cout << "Choose package size: ";
     char x;
     cin >> x;
     x = tolower(x);
@@ -75,9 +75,9 @@ void PackageService::nadaj(Customer user) {
     lockerService.reserveSlot(*selectedGabaryt);
 
     // Teraz 'package.getId()' jest ju¿ aktualnym ID z bazy!
-    cout << "Kod odbioru tej paczki to " << package.getKodOdbioru() << endl;
-    cout << "Nadano paczke o ID = " << package.getId() << endl;
-    cout << "Ostatnia modyfikacja: " << package.getLastModified() << endl;
+    cout << "Code of this package: " << package.getKodOdbioru() << endl;
+    cout << "You sent package with ID = " << package.getId() << endl;
+    cout << "Last modified: " << package.getLastModified() << endl;
 
     // Pobranie bie¿¹cej daty i godziny
     time_t now = time(0);
@@ -97,7 +97,7 @@ void PackageService::nadaj(Customer user) {
     ofstream outFile(fileName, ios::app);
     if (outFile.is_open()) {
         // Teraz paczka ma poprawne ID
-        outFile << package.getId() << ", nadana, "
+        outFile << package.getId() << ", sent, "
             << currentDate << ", "
             << currentTime << endl;
         outFile.close();
@@ -109,7 +109,7 @@ void PackageService::nadaj(Customer user) {
     cout << "Package successfully added!\n";
 }
 
-void PackageService::pickUp() {
+void PackageService::pickUp(Customer user) {
     string pickUpCode;
     cout << "Enter your pickup code: ";
     cin >> pickUpCode;
@@ -145,8 +145,36 @@ void PackageService::pickUp() {
         Gabaryt* gabaryt = packageCollected.getGabaryt();
         lockerService.releaseSlot(*gabaryt);  
         cout << "Slot for the package has been released.\n";
+
+        // Pobranie bie¿¹cej daty i godziny
+        time_t now = time(0);
+        tm ltm;
+        localtime_s(&ltm, &now);
+
+        string currentDate = to_string(1900 + ltm.tm_year) + "-" +
+            to_string(1 + ltm.tm_mon) + "-" +
+            to_string(ltm.tm_mday);
+
+        string currentTime = to_string(ltm.tm_hour) + ":" +
+            to_string(ltm.tm_min) + ":" +
+            to_string(ltm.tm_sec);
+
+        // Dodanie informacji o paczce do pliku u¿ytkownika
+        string fileName = "users_info/" + to_string(user.getId()) + "_info.txt";
+        ofstream outFile(fileName, ios::app);
+        if (outFile.is_open()) {
+            // Teraz paczka ma poprawne ID
+            outFile << packageCollected.getId() << ", picked up, "
+                << currentDate << ", "
+                << currentTime << endl;
+            outFile.close();
+        }
+        else {
+            cout << "Error: Could not open file for writing: " << fileName << endl;
+        }
     }
     else {
         cout << "Package not found or incorrect status.\n";
     }
+
 }
